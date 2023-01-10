@@ -1,0 +1,36 @@
+name:                book-of-monads
+version:             1.0.0
+github:              "asarkar/book-of-monads"
+# https://spdx.org/licenses/
+license:             "Apache-2.0"
+author:              "Abhijit Sarkar"
+maintainer:          "contact@asarkar.com"
+copyright:           "2023 Abhijit Sarkar"
+
+extra-source-files:
+- README.md
+
+# Metadata used when publishing your package
+# synopsis:            Working on working on the "Book of Monads" by Alejandro Serrano Mena
+# category:            Development
+
+# To avoid duplicated efforts in documentation and dealing with the
+# complications of embedding Haddock markup inside cabal files, it is
+# common to point users to the README.md file.
+description:         See README at <https://github.com/asarkar/book-of-monads#readme>
+
+dependencies:
+- base >= 4.7 && < 5
+
+ghc-options:
+- -Wall
+- -Werror
+
+library:
+  source-dirs: src
+
+tests:
+  book-of-monads-test:
+    defaults: hspec/hspec@main
+    dependencies:
+    - book-of-monads
