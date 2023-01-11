@@ -20,7 +20,7 @@ jobs:
         run: .github/run.sh --no-lint
 
       - name: Lint
-        uses: mrkkrp/ormolu-action@v8
+        uses: mrkkrp/ormolu-action@v9
         with:
           pattern: |
             src/**/*.hs

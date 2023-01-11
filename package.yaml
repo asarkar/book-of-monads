@@ -9,6 +9,7 @@ copyright:           "2023 Abhijit Sarkar"
 
 extra-source-files:
 - README.md
+- LICENSE
 
 # Metadata used when publishing your package
 # synopsis:            Working on working on the "Book of Monads" by Alejandro Serrano Mena

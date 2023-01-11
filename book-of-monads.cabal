@@ -17,6 +17,7 @@ license-file:   LICENSE
 build-type:     Simple
 extra-source-files:
     README.md
+    LICENSE
 
 source-repository head
   type: git
@@ -25,6 +26,9 @@ source-repository head
 library
   exposed-modules:
       Chapter00.Lib
+      Chapter01.Lib
+      Chapter03.Lib
+      Chapter04.Lib
   other-modules:
       Paths_book_of_monads
   hs-source-dirs:
@@ -39,6 +43,9 @@ test-suite book-of-monads-test
   main-is: Spec.hs
   other-modules:
       Chapter00.LibSpec
+      Chapter01.LibSpec
+      Chapter03.LibSpec
+      Chapter04.LibSpec
       Paths_book_of_monads
   hs-source-dirs:
       test
