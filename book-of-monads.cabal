@@ -46,12 +46,14 @@ test-suite book-of-monads-test
       Chapter01.LibSpec
       Chapter03.LibSpec
       Chapter04.LibSpec
+      SpecHook
       Paths_book_of_monads
   hs-source-dirs:
       test
   ghc-options: -Wall -Werror
   build-depends:
-      base >=4.7 && <5
+      QuickCheck
+    , base >=4.7 && <5
     , book-of-monads
     , hspec ==2.*
   default-language: Haskell2010

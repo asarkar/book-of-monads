@@ -35,3 +35,4 @@ tests:
     defaults: hspec/hspec@main
     dependencies:
     - book-of-monads
+    - QuickCheck
