@@ -22,10 +22,19 @@ description:         See README at <https://github.com/asarkar/book-of-monads#re
 
 dependencies:
 - base >= 4.7 && < 5
+- logict
+- stm
 
 ghc-options:
 - -Wall
 - -Werror
+
+executables:
+  chapter8-exe:
+    main: Main.hs
+    source-dirs: app/Chapter08
+    dependencies:
+    - book-of-monads
 
 library:
   source-dirs: src

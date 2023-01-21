@@ -4,6 +4,8 @@
 
 Here lay the projects while I was working on the [Book of Monads](https://leanpub.com/book-of-monads) by Alejandro Serrano Mena. I receive no financial incentive for the book purchase.
 
+A curated list of [Haskell resources](https://blogs.asarkar.com/haskell-curated/) is available on my blog.
+
 ## Running tests
 
 ```
