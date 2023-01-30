@@ -2,7 +2,7 @@
 {-# LANGUAGE TupleSections #-}
 {-# OPTIONS_GHC -Wno-unused-top-binds #-}
 
-module Chapter06.Lib () where
+module Ch06 () where
 
 newtype State s a = State {runState :: s -> (a, s)}
 

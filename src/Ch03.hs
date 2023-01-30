@@ -1,4 +1,4 @@
-module Chapter03.Lib (ap, ZipList (..), mapZ) where
+module Ch03 (ap, ZipList (..), mapZ) where
 
 import Prelude hiding (Monad, return, (>>=))
 

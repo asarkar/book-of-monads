@@ -1,6 +1,6 @@
-module Chapter04.LibSpec (spec) where
+module Ch04Spec (spec) where
 
-import Chapter04.Lib (filterM, replicateM, zipWithM)
+import Ch04 (filterM, replicateM, zipWithM)
 import qualified Control.Monad as M
 import Test.Hspec
 import Test.Hspec.QuickCheck
@@ -28,7 +28,7 @@ spec = do
                 == M.filterM f' xs
 
 genList :: Gen [Int]
-genList = resize 100 (listOf $ chooseInt (0, 1000))
+genList = vectorOf 100 $ chooseInt (0, 1000)
 
 genZ :: Gen (Fun (Int, Int) (Maybe Int), [Int], [Int])
 genZ = (,,) <$> arbitrary <*> genList <*> genList

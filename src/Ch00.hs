@@ -1,4 +1,4 @@
-module Chapter00.Lib (eqTuple, eqList, notEq, isEmptyList, insertList) where
+module Ch00 (eqTuple, eqList, notEq, isEmptyList, insertList) where
 
 import Prelude hiding (Eq (..))
 

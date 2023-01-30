@@ -3,7 +3,7 @@
 {-# LANGUAGE InstanceSigs #-}
 {-# OPTIONS_GHC -Wno-unused-top-binds #-}
 
-module Chapter07.Lib (pyts) where
+module Ch07 (pyts) where
 
 import qualified Control.Monad as M
 import Control.Monad.Logic (Logic, (>>-))

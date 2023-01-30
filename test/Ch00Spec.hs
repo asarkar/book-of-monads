@@ -1,7 +1,7 @@
-module Chapter00.LibSpec (spec) where
+module Ch00Spec (spec) where
 
-import Chapter00.Lib (eqList, eqTuple, insertList, isEmptyList, notEq)
-import Control.Monad
+import Ch00 (eqList, eqTuple, insertList, isEmptyList, notEq)
+import qualified Control.Monad as M
 import Test.Hspec
 import Test.Hspec.QuickCheck
 import Test.QuickCheck
@@ -20,7 +20,7 @@ spec = do
         \(xs, ys) -> eqList xs ys == (xs == ys)
 
     prop "insertion" $
-      forAll (liftM2 (,) genBool genList) $
+      forAll (M.liftM2 (,) genBool genList) $
         \(x, xs) -> insertList x xs == x : xs
 
     prop "emptiness" $
@@ -31,7 +31,7 @@ genBool :: Gen Bool
 genBool = arbitrary
 
 genList :: Gen [Bool]
-genList = resize 100 (listOf genBool)
+genList = vectorOf 100 genBool
 
 genLists :: Gen ([Bool], [Bool])
 genLists = do

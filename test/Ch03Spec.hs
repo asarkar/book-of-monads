@@ -1,6 +1,6 @@
-module Chapter03.LibSpec (spec) where
+module Ch03Spec (spec) where
 
-import Chapter03.Lib (ZipList (..), ap, mapZ)
+import Ch03 (ZipList (..), ap, mapZ)
 import Test.Hspec
 import Test.Hspec.QuickCheck
 import Test.QuickCheck
@@ -25,5 +25,5 @@ prop_Ap f x = ap f' x == (f' <*> x)
 genZ :: Gen (Fun Int Int, [Int])
 genZ = do
   f <- arbitrary
-  xs <- resize 100 (listOf $ chooseInt (0, 1000))
+  xs <- vectorOf 100 $ chooseInt (0, 1000)
   return (f, xs)

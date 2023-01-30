@@ -45,6 +45,7 @@ fi
 
 if (( no_lint == 0 )); then
 	if [[ -x "$(command -v hlint)" ]]; then
+		hlint app
 		hlint src
 		hlint test
 	else
@@ -57,6 +58,7 @@ if (( no_lint == 0 )); then
 	fi
 	
 	if [[ -x "$(command -v ormolu)" ]]; then
+		ormolu -m "$ormolu_mode" $(find app -name '*.hs')
 		ormolu -m "$ormolu_mode" $(find src -name '*.hs')
 		ormolu -m "$ormolu_mode" $(find test -name '*.hs')
 	else

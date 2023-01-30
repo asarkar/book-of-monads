@@ -24,15 +24,19 @@ dependencies:
 - base >= 4.7 && < 5
 - logict
 - stm
+- transformers
+- mtl
+- text
+- unliftio-core
 
 ghc-options:
 - -Wall
 - -Werror
 
 executables:
-  chapter8-exe:
-    main: Main.hs
-    source-dirs: app/Chapter08
+  ch08-exe:
+    main: Ch08/Main.hs
+    source-dirs: app
     dependencies:
     - book-of-monads
 
@@ -45,3 +49,7 @@ tests:
     dependencies:
     - book-of-monads
     - QuickCheck
+    - hint
+    - containers
+    - deepseq
+    - genvalidity-hspec

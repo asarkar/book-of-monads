@@ -1,6 +1,6 @@
-module Chapter07.LibSpec (spec) where
+module Ch07Spec (spec) where
 
-import Chapter07.Lib (pyts)
+import Ch07 (pyts)
 import qualified Control.Monad.Logic as L
 import Test.Hspec
 

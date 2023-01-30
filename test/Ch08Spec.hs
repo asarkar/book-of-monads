@@ -1,8 +1,8 @@
 {-# LANGUAGE TupleSections #-}
 
-module Chapter08.LibSpec (spec) where
+module Ch08Spec (spec) where
 
-import Chapter08.Lib (addName)
+import Ch08 (addName)
 import qualified Data.List as L
 import Test.Hspec
 import Test.Hspec.QuickCheck
@@ -40,7 +40,7 @@ name :: Gen String
 name = getPrintableString <$> arbitrary
 
 names :: Gen [String]
-names = resize 50 (listOf name)
+names = vectorOf 100 name
 
 pickName :: Gen ([String], String)
 pickName = do

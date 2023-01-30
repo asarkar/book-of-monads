@@ -1,4 +1,4 @@
-module Chapter01.Lib (Tree (..), relabel, (++), map) where
+module Ch01 (Tree (..), relabel, (++), map) where
 
 import Prelude hiding (map, pure, (++))
 

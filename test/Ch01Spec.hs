@@ -1,12 +1,12 @@
-module Chapter01.LibSpec (spec) where
+module Ch01Spec (spec) where
 
-import Chapter01.Lib (Tree (..), map, relabel, (++))
-import Control.Monad
+import Ch01 (Tree (..), map, relabel, (++))
+import qualified Control.Monad as M
 import Test.Hspec
 import Test.Hspec.QuickCheck
 import Test.QuickCheck
 import Prelude hiding (map, (++))
-import qualified Prelude
+import qualified Prelude as P
 
 spec :: Spec
 spec = do
@@ -20,12 +20,12 @@ spec = do
 
   describe "checks lists" $ do
     prop "concatenation" $
-      forAll (liftM2 (,) genList genList) $
-        \(xs, ys) -> xs ++ ys == (xs Prelude.++ ys)
+      forAll (M.liftM2 (,) genList genList) $
+        \(xs, ys) -> xs ++ ys == (xs P.++ ys)
 
     prop "mapping" $
       forAll genList $
-        \xs -> map (+ 1) xs == Prelude.map (+ 1) xs
+        \xs -> map (+ 1) xs == P.map (+ 1) xs
 
 genList :: Gen [Int]
-genList = resize 100 (listOf $ chooseInt (0, 1000))
+genList = vectorOf 100 $ chooseInt (0, 1000)

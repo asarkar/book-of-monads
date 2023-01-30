@@ -1,4 +1,4 @@
-module Chapter08.Lib (addName) where
+module Ch08 (addName) where
 
 import Control.Concurrent.STM (STM)
 import qualified Control.Concurrent.STM as S

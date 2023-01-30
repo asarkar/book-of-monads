@@ -22,6 +22,11 @@ To run exactly matching tests:
 ./.github/run.sh -m "/<some_word>/"
 ```
 
+To run a _specific test_:
+```
+./.github/run.sh -m "/Ch11/evaluates expression/eval/"
+```
+
 ## License
 
 Released under [Apache License v2.0](LICENSE).

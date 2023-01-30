@@ -1,4 +1,4 @@
-module Chapter04.Lib (zipWithM, replicateM, filterM) where
+module Ch04 (zipWithM, replicateM, filterM) where
 
 {-
 Exercise 4.1. Write implementations for the last two functions introduced
