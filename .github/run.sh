@@ -4,8 +4,7 @@ set -e
 
 no_test=0
 no_lint=0
-stack_opts='--resolver lts'
-ghc_opts='-Wall -Werror'
+stack_opts=""
 
 while (( $# > 0 )); do
    case "$1" in
@@ -39,15 +38,19 @@ args=( "${@/#/\"}" )
 args=( "${args[@]/%/\"}" )
 
 if (( no_test == 0 )); then
-		# profiling https://stackoverflow.com/a/40922201/839733
-		stack $stack_opts test --ta "${args[*]}" --ghc-options="$ghc_opts"
+    # Try GHCup first.
+    stack_path="$HOME/.ghcup/bin/stack"
+    if [[ ! -x "$(command -v "$stack_path")" ]]; then
+	  stack_path=stack
+	fi
+	  
+	# profiling https://stackoverflow.com/a/40922201/839733
+	"$stack_path" test $stack_opts --ta "${args[*]}"
 fi
 
 if (( no_lint == 0 )); then
 	if [[ -x "$(command -v hlint)" ]]; then
-		hlint app
-		hlint src
-		hlint test
+		hlint .
 	else
 		printf "hlint not found"
 	fi
@@ -58,9 +61,7 @@ if (( no_lint == 0 )); then
 	fi
 	
 	if [[ -x "$(command -v ormolu)" ]]; then
-		ormolu -m "$ormolu_mode" $(find app -name '*.hs')
-		ormolu -m "$ormolu_mode" $(find src -name '*.hs')
-		ormolu -m "$ormolu_mode" $(find test -name '*.hs')
+		ormolu -m "$ormolu_mode" $(find . -type f -name '*.hs')
 	else
 		printf "ormolu not found"
 	fi

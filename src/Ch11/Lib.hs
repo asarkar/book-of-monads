@@ -1,3 +1,4 @@
+{-# LANGUAGE DerivingStrategies #-}
 {-# LANGUAGE LambdaCase #-}
 
 module Ch11.Lib
@@ -95,7 +96,7 @@ Check that applying one after the other, in any order, always gives back
 the same result.
 -}
 newtype Identity a = I a
-  deriving (Eq, Show)
+  deriving stock (Eq, Show)
 
 toIdentity :: a -> Identity a
 toIdentity = I

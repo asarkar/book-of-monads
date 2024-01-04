@@ -5,7 +5,7 @@ github:              "asarkar/book-of-monads"
 license:             "Apache-2.0"
 author:              "Abhijit Sarkar"
 maintainer:          "contact@asarkar.com"
-copyright:           "2023 Abhijit Sarkar"
+copyright:           "2024 Abhijit Sarkar"
 
 extra-source-files:
 - README.md
@@ -23,28 +23,45 @@ description:         See README at <https://github.com/asarkar/book-of-monads#re
 dependencies:
 - base >= 4.7 && < 5
 - logict
-- stm
 - transformers
-- mtl
-- text
-- unliftio-core
 
 ghc-options:
-- -Wall
+- -XTupleSections
 - -Werror
+# For details on warnings: https://downloads.haskell.org/~ghc/master/users-guide/using-warnings.html
+# This list originally taken from https://medium.com/mercury-bank/enable-all-the-warnings-a0517bc081c3
+# Enable all warnings with -Weverything, then disable the ones we don’t care about
+- -Weverything
+- -Wno-missing-import-lists  # Requires explicit imports of _every_ function (e.g. ‘$’); too strict
+- -Wno-missed-specializations  # When GHC can’t specialize a polymorphic function. No big deal and requires fixing underlying libraries to solve.
+- -Wno-all-missed-specializations  # See missed-specialisations
+- -Wno-missing-local-signatures  # Warning for polymorphic local bindings; nothing wrong with those.
+- -Wno-monomorphism-restriction  # Don’t warn if the monomorphism restriction is used.
+- -Wno-missing-safe-haskell-mode  # Never heard of it.
+- -Wno-safe
+- -Wno-unsafe
+- -Wno-implicit-prelude  # In most cases, we want Prelude implicitly imported.
+- -Wno-prepositive-qualified-module
+- -Wno-missing-kind-signatures
+- -Wno-unused-top-binds
+- -Wno-missing-export-lists
 
-executables:
-  ch08-exe:
-    main: Ch08/Main.hs
-    source-dirs: app
-    dependencies:
-    - book-of-monads
+# executables:
+#   ch08-exe:
+#     main: Ch08/Main.hs
+#     source-dirs: app
+#     dependencies:
+#     - book-of-monads
 
 library:
   source-dirs: src
+  dependencies:
+  - stm
+  - mtl
+  - unliftio-core
 
 tests:
-  book-of-monads-test:
+  book-of-monads:
     defaults: hspec/hspec@main
     dependencies:
     - book-of-monads

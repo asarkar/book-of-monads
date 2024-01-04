@@ -38,7 +38,7 @@ instance Monad (Either e) where
   Right x >>= f = f x
   Left x >>= _ = Left x
 
-class Applicative f => Alternative f where
+class (Applicative f) => Alternative f where
   empty :: f a
   (<|>) :: f a -> f a -> f a
 
@@ -49,8 +49,11 @@ Requiring the error type to be a monoid is a common solution
 to this problem.
 -}
 
-instance Monoid e => Alternative (Either e) where
+instance (Monoid e) => Alternative (Either e) where
+  empty :: Either e a
   empty = Left mempty
+
+  (<|>) :: Either e a -> Either e a -> Either e a
   Right x <|> _ = Right x
   Left _ <|> Right x = Right x
   Left x <|> Left x' = Left (x <> x')
@@ -104,18 +107,23 @@ pyts ns =
   fairTriples ns
     >>= \(x, y, z) -> M.guard (x * x + y * y == z * z) >> return (x, y, z)
 
-class Monad m => MonadError e m | m -> e where
+class (Monad m) => MonadError e m | m -> e where
   throwError :: e -> m a
   catchError :: m a -> (e -> m a) -> m a
 
 -- Exercise 7.5 - Implement MonadError for Maybe and Either.
 instance MonadError () Maybe where
+  throwError :: () -> Maybe a
   throwError _ = Nothing
 
+  catchError :: Maybe a -> (() -> Maybe a) -> Maybe a
   Nothing `catchError` f = f ()
   ma `catchError` _ = ma
 
 instance MonadError e (Either e) where
+  throwError :: e -> Either e a
   throwError = Left
+
+  catchError :: Either e a -> (e -> Either e a) -> Either e a
   Left l `catchError` h = h l
   Right r `catchError` _ = Right r

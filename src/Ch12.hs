@@ -62,7 +62,7 @@ a = value returned in the Monad
 https://blog.ssanj.net/posts/2018-01-12-stacking-the-readert-writert-monad-transformer-stack-in-haskell.html
 -}
 
-class Monad m => MonadReader r m | m -> r where
+class (Monad m) => MonadReader r m | m -> r where
   ask :: m r
   reader :: (r -> a) -> m a
   {- HLINT ignore -}
@@ -78,7 +78,7 @@ class (Monoid w, Monad m) => MonadWriter w m | m -> w where
 {-
 Need the assertion 'MonadReader r m' because we call 'ask' on it.
 -}
-instance MonadReader r m => MonadReader r (ReaderT r m) where
+instance (MonadReader r m) => MonadReader r (ReaderT r m) where
   ask :: ReaderT r m r
   ask = liftThroughReaderT ask
 
@@ -131,7 +131,7 @@ instance
 {-
 Need the assertion 'MonadWriter w m' because we call 'tell' on it.
 -}
-instance MonadWriter w m => MonadWriter w (ReaderT r m) where
+instance (MonadWriter w m) => MonadWriter w (ReaderT r m) where
   tell :: w -> ReaderT r m ()
   tell = liftThroughReaderT . tell
 
@@ -172,7 +172,7 @@ withFile :: FilePath -> IOMode -> (Handle -> IO r) -> IO r
 Note that you have to define both the new signature and its implementation.
 -}
 withFile ::
-  MonadUnliftIO m =>
+  (MonadUnliftIO m) =>
   FilePath ->
   IOMode ->
   (Handle -> m r) ->

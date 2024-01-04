@@ -81,7 +81,7 @@ prop_monadLeftId a s f = ((===) `F.on` go) (return a >>= h) m
 -- ((x >>= f) >>= g) == (x >>= (\x' -> f x' >>= g))
 prop_monadAssoc ::
   forall a b c s m.
-  (Monad m, Eq (m (b, s)), Show (m (b, s)), Eq (m (c, s)), Show (m (c, s))) =>
+  (Monad m, Eq (m (c, s)), Show (m (c, s))) =>
   s ->
   Fun s (m (a, s)) ->
   Fun (a, s) (m (b, s)) ->

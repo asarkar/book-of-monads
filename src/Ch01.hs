@@ -1,3 +1,5 @@
+{-# LANGUAGE DerivingStrategies #-}
+
 module Ch01 (Tree (..), relabel, (++), map) where
 
 import Prelude hiding (map, pure, (++))
@@ -16,7 +18,7 @@ pure :: a -> State s a
 -- pure :: a -> s -> (a, s)
 pure = (,)
 
-data Tree a = Leaf a | Node (Tree a) (Tree a) deriving (Show, Eq)
+data Tree a = Leaf a | Node (Tree a) (Tree a) deriving stock (Show, Eq)
 
 relabel :: Tree a -> State Int (Tree (Int, a))
 relabel (Leaf x) = \i -> (Leaf (i, x), i + 1)

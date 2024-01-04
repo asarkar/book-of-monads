@@ -1,6 +1,6 @@
 cabal-version: 1.12
 
--- This file has been generated from package.yaml by hpack version 0.35.1.
+-- This file has been generated from package.yaml by hpack version 0.36.0.
 --
 -- see: https://github.com/sol/hpack
 
@@ -11,7 +11,7 @@ homepage:       https://github.com/asarkar/book-of-monads#readme
 bug-reports:    https://github.com/asarkar/book-of-monads/issues
 author:         Abhijit Sarkar
 maintainer:     contact@asarkar.com
-copyright:      2023 Abhijit Sarkar
+copyright:      2024 Abhijit Sarkar
 license:        Apache-2.0
 license-file:   LICENSE
 build-type:     Simple
@@ -39,36 +39,17 @@ library
       Paths_book_of_monads
   hs-source-dirs:
       src
-  ghc-options: -Wall -Werror
+  ghc-options: -XTupleSections -Werror -Weverything -Wno-missing-import-lists -Wno-missed-specializations -Wno-all-missed-specializations -Wno-missing-local-signatures -Wno-monomorphism-restriction -Wno-missing-safe-haskell-mode -Wno-safe -Wno-unsafe -Wno-implicit-prelude -Wno-prepositive-qualified-module -Wno-missing-kind-signatures -Wno-unused-top-binds -Wno-missing-export-lists
   build-depends:
       base >=4.7 && <5
     , logict
     , mtl
     , stm
-    , text
     , transformers
     , unliftio-core
   default-language: Haskell2010
 
-executable ch08-exe
-  main-is: Ch08/Main.hs
-  other-modules:
-      Paths_book_of_monads
-  hs-source-dirs:
-      app
-  ghc-options: -Wall -Werror
-  build-depends:
-      base >=4.7 && <5
-    , book-of-monads
-    , logict
-    , mtl
-    , stm
-    , text
-    , transformers
-    , unliftio-core
-  default-language: Haskell2010
-
-test-suite book-of-monads-test
+test-suite book-of-monads
   type: exitcode-stdio-1.0
   main-is: Spec.hs
   other-modules:
@@ -84,7 +65,7 @@ test-suite book-of-monads-test
       Paths_book_of_monads
   hs-source-dirs:
       test
-  ghc-options: -Wall -Werror
+  ghc-options: -XTupleSections -Werror -Weverything -Wno-missing-import-lists -Wno-missed-specializations -Wno-all-missed-specializations -Wno-missing-local-signatures -Wno-monomorphism-restriction -Wno-missing-safe-haskell-mode -Wno-safe -Wno-unsafe -Wno-implicit-prelude -Wno-prepositive-qualified-module -Wno-missing-kind-signatures -Wno-unused-top-binds -Wno-missing-export-lists
   build-depends:
       QuickCheck
     , base >=4.7 && <5
@@ -95,10 +76,6 @@ test-suite book-of-monads-test
     , hint
     , hspec ==2.*
     , logict
-    , mtl
-    , stm
-    , text
     , transformers
-    , unliftio-core
   default-language: Haskell2010
   build-tool-depends: hspec-discover:hspec-discover == 2.*

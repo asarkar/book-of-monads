@@ -1,8 +1,6 @@
-# book-of-monads
+My solutions to the exercises from the book [Book of Monads](https://leanpub.com/book-of-monads), 2nd edition.
 
 [![](https://github.com/asarkar/book-of-monads/workflows/CI/badge.svg)](https://github.com/asarkar/book-of-monads/actions)
-
-Here lay the projects while I was working on the [Book of Monads](https://leanpub.com/book-of-monads) by Alejandro Serrano Mena. I receive no financial incentive for the book purchase.
 
 A curated list of [Haskell resources](https://blogs.asarkar.com/haskell-curated/) is available on my blog.
 
@@ -25,6 +23,17 @@ To run exactly matching tests:
 To run a _specific test_:
 ```
 ./.github/run.sh -m "/Ch11/evaluates expression/eval/"
+```
+
+To run a file containing a `main` method:
+```
+stack runhaskell app/Main.hs
+```
+
+To run an executable listed in `package.yaml`:
+```
+stack build
+stack exec <name>
 ```
 
 ## License

@@ -1,3 +1,6 @@
+{-# LANGUAGE DerivingStrategies #-}
+{-# LANGUAGE InstanceSigs #-}
+
 module Ch03 (ap, ZipList (..), mapZ) where
 
 import Prelude hiding (Monad, return, (>>=))
@@ -32,7 +35,7 @@ Found:
 Perhaps:
   x Data.Functor.<&> f'
 -}
-ap :: Monad m => m (b -> c) -> m b -> m c
+ap :: (Monad m) => m (b -> c) -> m b -> m c
 ap f x = f >>= (\f' -> x >>= (return . f'))
 
 {- -Wunused-top-binds
@@ -48,10 +51,11 @@ Write fmap as a combination of pure and ap.
 fmap f = (ap . pure f)
 -}
 
-newtype ZipList a = ZipList [a] deriving (Show, Eq)
+newtype ZipList a = ZipList [a] deriving stock (Show, Eq)
 
 -- Exercise 3.8. Write the Functor instance for ZipList.
 instance Functor ZipList where
+  fmap :: (a -> b) -> ZipList a -> ZipList b
   fmap f (ZipList xs) = ZipList $ fmap f xs
 
 mapZ :: (a -> b) -> ZipList a -> ZipList b
@@ -59,7 +63,7 @@ mapZ = fmap
 
 {-
 Exercise 3.4. Write the functions that perform the conversions between the
-"normal" implementations oftriples and 4-tuplesand their implementations as
+"normal" implementations oftriples and 4-tuples and their implementations as
 nested pairs.
 
 tuple3 :: (a, b, c) -> ((a, b), c)
