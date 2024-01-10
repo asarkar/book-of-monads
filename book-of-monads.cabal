@@ -35,13 +35,34 @@ library
       Ch11.Lib
       Ch11.MonadT
       Ch12
+      Ch13.Final.FS
+      Ch13.Final.TicTacToe
+      Ch13.Free.Free
+      Ch13.Free.FS
+      Ch13.Free.Stack
+      Ch13.Free.TicTacToe
+      Ch13.Freer.Freer
+      Ch13.Freer.Program
+      Ch13.Freer.Stack
+      Ch13.Freer.TicTacToe
+      Ch13.Initial.FS
+      Ch13.Initial.TicTacToe
+      Ch13.Inspectable
+      Ch13.MockFileSystem
+      Ch13.Operational.FS
+      Ch13.Operational.Stack
+      Ch13.Operational.TicTacToe
+      Ch13.TicTacToe
   other-modules:
       Paths_book_of_monads
   hs-source-dirs:
       src
-  ghc-options: -XTupleSections -Werror -Weverything -Wno-missing-import-lists -Wno-missed-specializations -Wno-all-missed-specializations -Wno-missing-local-signatures -Wno-monomorphism-restriction -Wno-missing-safe-haskell-mode -Wno-safe -Wno-unsafe -Wno-implicit-prelude -Wno-prepositive-qualified-module -Wno-missing-kind-signatures -Wno-unused-top-binds -Wno-missing-export-lists
+  default-extensions:
+      TupleSections
+  ghc-options: -Werror -Weverything -Wno-missing-import-lists -Wno-missed-specializations -Wno-all-missed-specializations -Wno-missing-local-signatures -Wno-monomorphism-restriction -Wno-missing-safe-haskell-mode -Wno-safe -Wno-unsafe -Wno-implicit-prelude -Wno-prepositive-qualified-module -Wno-missing-kind-signatures -Wno-unused-top-binds -Wno-missing-export-lists
   build-depends:
       base >=4.7 && <5
+    , containers
     , logict
     , mtl
     , stm
@@ -65,7 +86,9 @@ test-suite book-of-monads
       Paths_book_of_monads
   hs-source-dirs:
       test
-  ghc-options: -XTupleSections -Werror -Weverything -Wno-missing-import-lists -Wno-missed-specializations -Wno-all-missed-specializations -Wno-missing-local-signatures -Wno-monomorphism-restriction -Wno-missing-safe-haskell-mode -Wno-safe -Wno-unsafe -Wno-implicit-prelude -Wno-prepositive-qualified-module -Wno-missing-kind-signatures -Wno-unused-top-binds -Wno-missing-export-lists
+  default-extensions:
+      TupleSections
+  ghc-options: -Werror -Weverything -Wno-missing-import-lists -Wno-missed-specializations -Wno-all-missed-specializations -Wno-missing-local-signatures -Wno-monomorphism-restriction -Wno-missing-safe-haskell-mode -Wno-safe -Wno-unsafe -Wno-implicit-prelude -Wno-prepositive-qualified-module -Wno-missing-kind-signatures -Wno-unused-top-binds -Wno-missing-export-lists
   build-depends:
       QuickCheck
     , base >=4.7 && <5

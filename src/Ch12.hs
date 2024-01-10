@@ -152,15 +152,18 @@ class (Monad b, Monad m) => MonadBase b m | m -> b where
   liftBase :: b a -> m a
 
 instance MonadBase IO IO where
+  liftBase :: IO a -> IO a
   liftBase = R.liftIO
 
 instance MonadBase (ST s) (ST s) where
+  liftBase :: ST s a -> ST s a
   liftBase = liftBase
 
 instance
   (Monad (t m), MonadBase b m, MonadTrans t) =>
   MonadBase b (t m)
   where
+  liftBase :: b a -> t m a
   liftBase = lift . liftBase
 
 {-
